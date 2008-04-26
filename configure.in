@@ -112,4 +112,8 @@ AC_FUNC_STRFTIME
 AC_FUNC_VPRINTF
 AC_CHECK_FUNCS(gethostname mkdir select socket strtol vasprintf vsnprintf mkstemp usleep)
 
+dnl Lua files.
+AC_CHECK_HEADERS(lua5.1/lua.h lua5.1/lauxlib.h, , AC_MSG_FAILURE([Lua header files not found]))
+AC_CHECK_LIB(lua5.1, main, [LIBS="$LIBS -llua5.1"], AC_MSG_FAILURE([Lua library not found]))
+
 AC_OUTPUT(Makefile src/Makefile lib/Makefile lib/apex/Makefile lib/bone/Makefile lib/data/Makefile lib/edit/Makefile lib/file/Makefile lib/help/Makefile lib/info/Makefile lib/pref/Makefile lib/save/Makefile lib/script/Makefile lib/user/Makefile lib/xtra/Makefile lib/xtra/font/Makefile lib/xtra/graf/Makefile lib/xtra/music/Makefile lib/xtra/sound/Makefile)

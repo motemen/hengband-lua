@@ -2590,6 +2590,12 @@ note("[ユーザー設定ファイルを初期化しています...]");
 	/* Process that file */
 	process_pref_file(buf);
 
+	/*** Load Lua scripts ***/
+
+	note("[Loading Lua scripts...");
+
+	script_init();
+
 	/* Done */
 #ifdef JP
 	note("[初期化終了]");
