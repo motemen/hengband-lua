@@ -600,7 +600,7 @@
 /*
  * Use world score server
  */
-#define WORLD_SCORE
+#undef WORLD_SCORE
 #endif
 
 #endif /* HAVE_CONFIG_H */
