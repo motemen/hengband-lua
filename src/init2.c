@@ -2566,7 +2566,9 @@ if (init_quests()) quit("クエストを初期化できません");
 	if (init_alloc()) quit("Cannot initialize alloc stuff");
 #endif
 
-
+	/*** Initialize scripts ***/
+	note("[Initializing scripts... (scripts)]");
+	if (script_init()) quit("Cannot initialize scripts");
 
 	/*** Load default user pref files ***/
 

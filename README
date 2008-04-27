@@ -1,0 +1,2 @@
+to make:
+	./bootstrap && ./configure --enable-script && make
