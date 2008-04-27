@@ -1,0 +1,23 @@
+## Amiga Makefile
+
+CFLAGS = DEFINE AMIGA DEFINE USE_AMI
+
+LIBLUA_OBJS = \
+  lapi.o ldebug.o lmem.o lstrlib.o lvm.o \
+  lauxlib.o ldo.o lobject.o ltable.o lzio.o \
+  lbaselib.o lfunc.o lparser.o lcode.o lgc.o \
+  lopcodes.o lstate.o ltm.o  ldblib.o llex.o \
+  lstring.o ldump.o lundump.o ltablib.o \
+  tolua_map.o tolua_is.o tolua_to.o tolua_push.o tolua_event.o
+
+all: lua.lib
+
+lua.lib: $(LIBLUA_OBJS)
+  @sc link $(LIBLUA_OBJS) objlib lua.lib lib sc:lib/sc.lib NOICONS STRIPDEBUG
+
+.c.o:
+  @echo Compiling $*.c
+  @sc $(CFLAGS) $*
+
+clean:
+  @-delete (*.o|*.lib) QUIET

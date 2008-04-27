@@ -1,0 +1,28 @@
+$lfile "compat.lua"
+$lfile "basic.lua"
+$lfile "feature.lua"
+$lfile "verbatim.lua"
+$lfile "code.lua"
+$lfile "typedef.lua"
+$lfile "container.lua"
+$lfile "package.lua"
+$lfile "module.lua"
+$lfile "namespace.lua"
+$lfile "define.lua"
+$lfile "enumerate.lua"
+$lfile "declaration.lua"
+$lfile "variable.lua"
+$lfile "array.lua"
+$lfile "function.lua"
+$lfile "operator.lua"
+$lfile "class.lua"
+$lfile "clean.lua"
+$lfile "doit.lua"
+
+$[
+local err,msg = pcall(doit)
+if not err then
+ local _,_,label,msg = strfind(msg,"(.-:.-:%s*)(.*)")
+ tolua_error(msg,label)
+end
+$]
