@@ -28,8 +28,7 @@ hengband_SOURCES = \
 	h-basic.h h-config.h h-define.h h-system.h h-type.h \
 	mindtips.h readdib.h rooms.h streams.h init.h \
 	types.h z-config.h z-form.h z-rand.h z-term.h z-util.h z-virt.h \
-	script.c script.h \
-	l-monst.c l-object.c l-player.c l-random.c l-ui.c l-misc.c l-spell.c
+	script.c script.h
 
 EXTRA_hengband_SOURCES = \
 	angband.ico angband.rc ang_eng.rc maid-x11.c main-mac.c main-win.c \
