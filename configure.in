@@ -36,6 +36,7 @@ AC_SUBST(DEFAULT_PATH)
 
 dnl Checks for programs.
 AC_PROG_CC
+AC_CHECK_TOOL(RANLIB, ranlib)
 
 AC_ARG_ENABLE(japanese,
 [  --disable-japanese      build english version], use_japanese=no, [AC_DEFINE(JP, 1, [Enable Japanese]) AC_DEFINE(EUC, 1, [Use Extended Unix Code])])
@@ -48,6 +49,8 @@ AC_ARG_ENABLE(worldscore,
 [  --disable-worldscore    disable worldscore support], , )
 AC_ARG_ENABLE(chuukei,
 [  --enable-chuukei        enable internet chuukei support], AC_DEFINE(CHUUKEI, 1, [Chuukei mode]))
+AC_ARG_ENABLE(script,
+[  --enable-script         enable lua script support], AC_DEFINE(USE_SCRIPT, 1, [Use Lua Script]))
 
 dnl -fno-strength-reduce prevents a bug in some versions of gcc
 if test "$GCC" = yes; then
@@ -112,8 +115,4 @@ AC_FUNC_STRFTIME
 AC_FUNC_VPRINTF
 AC_CHECK_FUNCS(gethostname mkdir select socket strtol vasprintf vsnprintf mkstemp usleep)
 
-dnl Lua files.
-AC_CHECK_HEADERS(lua5.1/lua.h lua5.1/lauxlib.h, , AC_MSG_FAILURE([Lua header files not found]))
-AC_CHECK_LIB(lua5.1, main, [LIBS="$LIBS -llua5.1"], AC_MSG_FAILURE([Lua library not found]))
-
-AC_OUTPUT(Makefile src/Makefile lib/Makefile lib/apex/Makefile lib/bone/Makefile lib/data/Makefile lib/edit/Makefile lib/file/Makefile lib/help/Makefile lib/info/Makefile lib/pref/Makefile lib/save/Makefile lib/script/Makefile lib/user/Makefile lib/xtra/Makefile lib/xtra/font/Makefile lib/xtra/graf/Makefile lib/xtra/music/Makefile lib/xtra/sound/Makefile)
+AC_OUTPUT(Makefile src/Makefile src/lua/Makefile lib/Makefile lib/apex/Makefile lib/bone/Makefile lib/data/Makefile lib/edit/Makefile lib/file/Makefile lib/help/Makefile lib/info/Makefile lib/pref/Makefile lib/save/Makefile lib/script/Makefile lib/user/Makefile lib/xtra/Makefile lib/xtra/font/Makefile lib/xtra/graf/Makefile lib/xtra/music/Makefile lib/xtra/sound/Makefile)

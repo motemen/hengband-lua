@@ -2,7 +2,12 @@
 
 AUTOMAKE_OPTIONS = foreign
 
+SUBDIRS = lua
+
 bin_PROGRAMS = hengband
+
+hengband_LDADD = lua/liblua.a
+hengband_DEPENDENCIES = lua/liblua.a
 
 hengband_SOURCES = \
 	z-util.c z-virt.c z-form.c z-rand.c z-term.c \
