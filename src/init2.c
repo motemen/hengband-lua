@@ -2566,10 +2566,6 @@ if (init_quests()) quit("クエストを初期化できません");
 	if (init_alloc()) quit("Cannot initialize alloc stuff");
 #endif
 
-	/*** Initialize scripts ***/
-	note("[Initializing scripts... (scripts)]");
-	if (script_init()) quit("Cannot initialize scripts");
-
 	/*** Load default user pref files ***/
 
 	/* Initialize feature info */
@@ -2593,10 +2589,9 @@ note("[ユーザー設定ファイルを初期化しています...]");
 	process_pref_file(buf);
 
 	/*** Load Lua scripts ***/
-
 	note("[Loading Lua scripts...");
 
-	script_init();
+	if (script_init()) quit ("Cannot initialize scripts");
 
 	/* Done */
 #ifdef JP
