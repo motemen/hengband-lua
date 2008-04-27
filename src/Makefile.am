@@ -28,13 +28,23 @@ hengband_SOURCES = \
 	h-basic.h h-config.h h-define.h h-system.h h-type.h \
 	mindtips.h readdib.h rooms.h streams.h init.h \
 	types.h z-config.h z-form.h z-rand.h z-term.h z-util.h z-virt.h \
-	script.c script.h
+	script.c script.h \
+	l-player.c
 
 EXTRA_hengband_SOURCES = \
 	angband.ico angband.rc ang_eng.rc maid-x11.c main-mac.c main-win.c \
 	main-dos.c main-ibm.c \
 	makefile.bcc makefile.std makefile.dos makefile.ibm \
 	readdib.c wall.bmp
+
+CLEANFILES = \
+	l-player.c
+
+.pkg.okg:
+	$(CC) -x c -E $< | grep -v -e '^#' > $@
+
+.okg.c:
+	./lua/tolua -n $(subst l-,,$*) -o $@ $<
 
 install-exec-hook:
 if SET_GID

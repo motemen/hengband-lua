@@ -741,7 +741,7 @@ errr script_init(void)
 	luaL_openlib(L, "angband", anglib, 0);
 
 	/* Register various Angband libraries */
-	//tolua_player_open(L);
+	tolua_player_open(L);
 	//tolua_object_open(L);
 	//tolua_monster_open(L);
 	//tolua_random_open(L);
