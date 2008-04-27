@@ -376,6 +376,97 @@ struct monster_race
 	u32b r_flagsr;			/* Observed racial resistance flags */
 };
 
+// Same as monster_race
+// But members are renamed for l-*.c from angband
+// TODO delete this struct and rewrite codes in l-*.c
+typedef struct monster_lore monster_lore;
+struct monster_lore
+{
+	u32b name;				/* Name (offset) */
+#ifdef JP
+	u32b E_name;                    /* ±Ñ¸ìÌ¾ (offset) */
+#endif
+	u32b text;				/* Text (offset) */
+
+	byte hdice;				/* Creatures hit dice count */
+	byte hside;				/* Creatures hit dice sides */
+
+	s16b ac;				/* Armour Class */
+
+	s16b sleep;				/* Inactive counter (base) */
+	byte aaf;				/* Area affect radius (1-100) */
+	byte speed;				/* Speed (normally 110) */
+
+	s32b mexp;				/* Exp value for kill */
+
+	s16b extra;				/* Unused (for now) */
+
+	byte freq_spell;		/* Spell frequency */
+
+	u32b flags1;			/* Flags 1 (general) */
+	u32b flags2;			/* Flags 2 (abilities) */
+	u32b flags3;			/* Flags 3 (race/resist) */
+	u32b flags4;			/* Flags 4 (inate/breath) */
+	u32b flags5;			/* Flags 5 (normal spells) */
+	u32b flags6;			/* Flags 6 (special spells) */
+	u32b flags7;			/* Flags 7 (movement related abilities) */
+	u32b flags8;			/* Flags 8 (wilderness info) */
+	u32b flags9;			/* Flags 9 (drops info) */
+	u32b flagsr;			/* Flags R (resistances info) */
+
+	monster_blow blow[4];	/* Up to four blows per round */
+
+	s16b next_r_idx;
+	u32b next_exp;
+
+	byte level;				/* Level of creature */
+	byte rarity;			/* Rarity of creature */
+
+
+	byte d_attr;			/* Default monster attribute */
+	byte d_char;			/* Default monster character */
+
+
+	byte x_attr;			/* Desired monster attribute */
+	byte x_char;			/* Desired monster character */
+
+
+	byte max_num;			/* Maximum population allowed per level */
+
+	byte cur_num;			/* Monster population on current level */
+
+	s16b floor_id;                  /* Location of unique monster */
+
+
+	s16b sights;			/* Count sightings of this monster */
+	s16b deaths;			/* Count deaths from this monster */
+
+	s16b pkills;			/* Count visible monsters killed in this life */
+	s16b akills;			/* Count all monsters killed in this life */
+	s16b tkills;			/* Count monsters killed in all lives */
+
+	byte wake;			/* Number of times woken up (?) */
+	byte ignore;			/* Number of times ignored (?) */
+
+	byte xtra1;			/* Something (unused) */
+	byte xtra2;			/* Something (unused) */
+
+	byte drop_gold;			/* Max number of gold dropped at once */
+	byte drop_item;			/* Max number of item dropped at once */
+
+	byte cast_spell;		/* Max number of other spells seen */
+
+	byte blows[4];			/* Number of times each blow type was seen */
+
+	u32b r_flags1;			/* Observed racial flags */
+	u32b r_flags2;			/* Observed racial flags */
+	u32b r_flags3;			/* Observed racial flags */
+	u32b r_flags4;			/* Observed racial flags */
+	u32b r_flags5;			/* Observed racial flags */
+	u32b r_flags6;			/* Observed racial flags */
+	/* u32b r_flags7; */			/* Observed racial flags */
+	u32b r_flagsr;			/* Observed racial resistance flags */
+};
 
 
 /*

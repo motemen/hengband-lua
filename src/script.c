@@ -740,8 +740,6 @@ errr script_init(void)
 	/* Register the Angband base library */
 	luaL_openlib(L, "angband", anglib, 0);
 
-#if 0
-	/* TODO */
 	/* Register various Angband libraries */
 	tolua_player_open(L);
 	tolua_object_open(L);
@@ -750,7 +748,6 @@ errr script_init(void)
 	tolua_ui_open(L);
 	tolua_misc_open(L);
 	tolua_spell_open(L);
-#endif
 
 	/* Initialization code */
 	path_build(buf, sizeof(buf), ANGBAND_DIR_SCRIPT, "init.lua");
