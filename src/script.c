@@ -745,7 +745,7 @@ errr script_init(void)
 	//tolua_object_open(L);
 	//tolua_monster_open(L);
 	//tolua_random_open(L);
-	//tolua_ui_open(L);
+	tolua_ui_open(L);
 	//tolua_misc_open(L);
 	//tolua_spell_open(L);
 
