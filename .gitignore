@@ -62,7 +62,6 @@ src/Makefile
 src/Makefile.in
 src/autoconf.h
 src/autoconf.h.in
-src/autoconf.h.in~
 src/hengband
 src/stamp-h1
 src/tags
@@ -71,3 +70,4 @@ src/lua/CVS
 src/lua/liblua.a
 src/lua/tolua
 src/l-player.c
+autom4te.cache

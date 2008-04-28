@@ -1,5 +1,3 @@
-#include "autoconf.h"
-
 $#include "angband.h"
 
 typedef char* cptr;
@@ -34,11 +32,6 @@ typedef int errr;
 #define A_CHR	5
 
 /*
- * Total number of stats.
- */
-#define A_MAX	6
-
-/*
  * Player sex constants (hard-coded by save-files, arrays, etc)
  */
 #define SEX_FEMALE              0
@@ -64,20 +57,6 @@ typedef int errr;
 
 /***** Types *****/
 
-/* Skills */
-#define MAX_SKILL	10
-
-#define SKILL_DIS	0 /* Skill: Disarming */
-#define SKILL_DEV	1 /* Skill: Magic Devices */
-#define SKILL_SAV	2 /* Skill: Saving throw */
-#define SKILL_STL	3 /* Skill: Stealth factor */
-#define SKILL_SNS	4 /* Skill: Sensing ability */
-#define SKILL_FOS	5 /* Skill: Searching frequency */
-#define SKILL_THN	6 /* Skill: To hit (normal) */
-#define SKILL_THB	7 /* Skill: To hit (shooting) */
-#define SKILL_THT	8 /* Skill: To hit (throwing) */
-#define SKILL_DIG	9 /* Skill: Digging */
-
 struct player_magic
 {
 	int spell_book;		/* Tval of spell books (if any) */
@@ -96,19 +75,19 @@ struct player_sex
 {
 	cptr title;			/* Type of sex */
 	cptr winner;		/* Name of winner */
-#ifdef JP
+//#ifdef JP
 	cptr E_title;		/* ±—∏Ï¿≠ Ã */
 	cptr E_winner;		/* ±—∏Ï¿≠ Ã */
-#endif
+//#endif
 };
 
 struct player_race
 {
 	cptr title;			/* Type of race */
 
-#ifdef JP
+//#ifdef JP
 	cptr E_title;		/* ±—∏ÏºÔ¬≤ */
-#endif
+//#endif
 	s16b r_adj[6];		/* Racial stat bonuses */
 
 	s16b r_dis;			/* disarming */
@@ -146,9 +125,9 @@ struct player_class
 {
 	cptr title;			/* Type of class */
 
-#ifdef JP
+//#ifdef JP
 	cptr E_title;		/* ±—∏Ïø¶∂» */
-#endif
+//#endif
 	s16b c_adj[6];		/* Class stat modifier */
 
 	s16b c_dis;			/* class disarming */
@@ -179,9 +158,9 @@ struct player_seikaku
 {
 	cptr title;			/* Type of seikaku */
 
-#ifdef JP
+//#ifdef JP
 	cptr E_title;		/* ±—∏Ï¿≠≥  */
-#endif
+//#endif
 
 	s16b a_adj[6];		/* seikaku stat bonuses */
 
