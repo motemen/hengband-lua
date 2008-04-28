@@ -40,10 +40,7 @@ EXTRA_hengband_SOURCES = \
 CLEANFILES = \
 	l-player.c
 
-.pkg.okg:
-	$(CC) -x c -E $< | grep -v -e '^#' > $@
-
-.okg.c:
+.pkg.c:
 	./lua/tolua -n $(subst l-,,$*) -o $@ $<
 
 install-exec-hook:
