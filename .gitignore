@@ -1,6 +1,13 @@
 *.swp
 *.o
+*.obj
 *.deps
+angband.res
+hengband.ilc
+hengband.ild
+hengband.ilf
+hengband.ils
+hengband.tds
 Makefile
 Makefile.in
 aclocal.m4
