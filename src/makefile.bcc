@@ -73,8 +73,11 @@ LUAOBJS = \
 	lua\tolua_map.obj lua\tolua_is.obj lua\tolua_to.obj lua\tolua_push.obj lua\tolua_event.obj
 
 TOLUAOBJS = \
-	lua\tolua.obj lua\tolualua.obj lua\liolib.obj \
+	lua\tolua.obj lua\liolib.obj lua\toluabind.obj \
 	$(LUAOBJS)
+
+LUA_WRAPPER_OBJS = \
+	l-player.obj
 
 OBJ = \
 	artifact.obj autopick.obj avatar.obj birth.obj bldg.obj cave.obj \
@@ -90,7 +93,8 @@ OBJ = \
 	variable.obj wild.obj wizard1.obj wizard2.obj xtra1.obj xtra2.obj \
 	z-form.obj z-rand.obj z-term.obj z-util.obj z-virt.obj \
 	script.obj \
-	$(LUAOBJS)
+	$(LUAOBJS) \
+	$(LUA_WRAPPER_OBJS)
 
 all : $(EXE_FILE)
 
@@ -118,6 +122,9 @@ $(TOLUA_EXE): $(TOLUAOBJS)
 angband.res: $(ANGBAND_RC)
 	$(RC) -r -foangband.res $(ANGBAND_RC)
 
+l-player.c: l-player.pkg $(TOLUA_EXE)
+	$(TOLUA_EXE) -n player -o l-player.c l-player.pkg
+
 ########################### Implicit Rules ########################
 .c.obj:
 	$(CPP) $(CPPFLAGS) -c {$? }
@@ -127,4 +134,3 @@ angband.res: $(ANGBAND_RC)
 
 .obj.exe:
 	$(CPP) $(CPPFLAGS) $<
-
