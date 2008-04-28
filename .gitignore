@@ -1,5 +1,6 @@
 *.swp
 *.o
+*.obj
 *.deps
 Makefile
 Makefile.in
