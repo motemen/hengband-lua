@@ -79,4 +79,5 @@ src/lua/tolua
 src/l-player.c
 src/l-ui.c
 src/l-object.c
+src/l-monst.c
 autom4te.cache
