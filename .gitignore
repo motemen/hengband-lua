@@ -80,4 +80,5 @@ src/l-player.c
 src/l-ui.c
 src/l-object.c
 src/l-monst.c
+src/l-spell.c
 autom4te.cache
