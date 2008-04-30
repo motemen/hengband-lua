@@ -742,7 +742,7 @@ errr script_init(void)
 
 	/* Register various Angband libraries */
 	tolua_player_open(L);
-	//tolua_object_open(L);
+	tolua_object_open(L);
 	//tolua_monster_open(L);
 	//tolua_random_open(L);
 	tolua_ui_open(L);

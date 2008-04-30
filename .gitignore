@@ -77,4 +77,6 @@ src/lua/CVS
 src/lua/liblua.a
 src/lua/tolua
 src/l-player.c
+src/l-ui.c
+src/l-object.c
 autom4te.cache
