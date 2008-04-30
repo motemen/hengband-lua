@@ -81,4 +81,5 @@ src/l-ui.c
 src/l-object.c
 src/l-monst.c
 src/l-spell.c
+src/l-random.c
 autom4te.cache
