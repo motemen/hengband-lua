@@ -1724,3 +1724,5 @@ extern void flush_ringbuf(void);
 extern void prepare_chuukei_hooks(void);
 #endif
 
+/* script.c */
+extern bool script_do_file(cptr filename);

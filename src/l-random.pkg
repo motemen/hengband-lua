@@ -1,0 +1,30 @@
+$#include "angband.h"
+
+typedef char* cptr;
+typedef int errr;
+
+
+/***** Variables *****/
+
+extern bool Rand_quick;
+
+
+/***** Functions *****/
+
+extern s32b randint0(u32b m);
+extern s32b randint1(u32b m);
+extern s32b rand_range(u32b A, u32b B);
+extern s32b rand_spread(u32b A, u32b D);
+extern s32b magik(u32b P);
+extern s32b one_in_(u32b X);
+extern s32b saving_throw(u32b S);
+extern int damroll(int num, int sides);
+extern int maxroll(int num, int sides);
+
+extern void Rand_state_init(u32b seed);
+extern s32b Rand_div(u32b m);
+extern s16b randnor(int mean, int stand);
+extern s16b damroll(int num, int sides);
+extern s16b maxroll(int num, int sides);
+extern s32b div_round(s32b n, s32b d);
+extern u32b Rand_simple(u32b m);

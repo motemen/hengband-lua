@@ -742,12 +742,12 @@ errr script_init(void)
 
 	/* Register various Angband libraries */
 	tolua_player_open(L);
-	//tolua_object_open(L);
-	//tolua_monster_open(L);
-	//tolua_random_open(L);
-	//tolua_ui_open(L);
-	//tolua_misc_open(L);
-	//tolua_spell_open(L);
+	tolua_object_open(L);
+	tolua_monst_open(L);
+	tolua_random_open(L);
+	tolua_ui_open(L);
+	tolua_misc_open(L);
+	tolua_spell_open(L);
 
 	/* Initialization code */
 	path_build(buf, sizeof(buf), ANGBAND_DIR_SCRIPT, "init.lua");
