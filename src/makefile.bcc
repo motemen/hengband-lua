@@ -25,6 +25,7 @@ RC         = brc32
 
 EXE_FILE = hengband.exe
 
+TOLUA_EXE = lua\tolua.exe
 
 ###################################################################
 #
@@ -54,13 +55,29 @@ ANGBAND_RC = angband.rc
 CCOPTS = -Od -jb -j1 -Hc -tW -lGn -e$(EXE_FILE) \
 	-wamb -wdef -wnod -wpin -wstu -wstv -wuse \
 	-D_WIN32_WINNT=0x0400 -DWINVER=0x0400 \
-	-DUSE_TRANSPARENCY $(JP_OPT)
+	-DUSE_TRANSPARENCY $(JP_OPT) \
+	-DUSE_SCRIPT
 
 # Compile flags:
 CPPFLAGS= $(CCOPTS) $(DBGOPT)
 
 
 ######################## Targets ##################################
+
+LUAOBJS = \
+	lua\lapi.obj lua\ldebug.obj lua\lmem.obj lua\lstrlib.obj lua\lvm.obj \
+	lua\lauxlib.obj lua\ldo.obj lua\lobject.obj lua\ltable.obj lua\lzio.obj \
+	lua\lbaselib.obj lua\lfunc.obj lua\lparser.obj lua\lcode.obj lua\lgc.obj \
+	lua\lopcodes.obj lua\lstate.obj lua\ltm.obj  lua\ldblib.obj lua\llex.obj \
+	lua\lstring.obj lua\ldump.obj lua\lundump.obj lua\ltablib.obj \
+	lua\tolua_map.obj lua\tolua_is.obj lua\tolua_to.obj lua\tolua_push.obj lua\tolua_event.obj
+
+TOLUAOBJS = \
+	lua\tolua.obj lua\liolib.obj lua\toluabind.obj \
+	$(LUAOBJS)
+
+LUA_WRAPPER_OBJS = \
+	l-player.obj l-ui.obj l-object.obj l-monst.obj l-spell.obj l-random.obj l-misc.obj
 
 OBJ = \
 	artifact.obj autopick.obj avatar.obj birth.obj bldg.obj cave.obj \
@@ -74,7 +91,10 @@ OBJ = \
 	report.obj rooms.obj save.obj scores.obj spells1.obj \
 	spells2.obj spells3.obj store.obj streams.obj tables.obj util.obj \
 	variable.obj wild.obj wizard1.obj wizard2.obj xtra1.obj xtra2.obj \
-	z-form.obj z-rand.obj z-term.obj z-util.obj z-virt.obj
+	z-form.obj z-rand.obj z-term.obj z-util.obj z-virt.obj \
+	script.obj \
+	$(LUAOBJS) \
+	$(LUA_WRAPPER_OBJS)
 
 all : $(EXE_FILE)
 
@@ -96,8 +116,32 @@ install: $(EXE_FILE)
 $(EXE_FILE): $(OBJ) angband.res
 	$(LINKER) -aa -x $(OBJ) c0w32.obj, $(EXE_FILE),, cw32.lib import32.lib,, angband.res
 
+$(TOLUA_EXE): $(TOLUAOBJS)
+	$(LINKER) -aa -x $(TOLUAOBJS) c0x32.obj, $(TOLUA_EXE),, cw32.lib import32.lib
+
 angband.res: $(ANGBAND_RC)
 	$(RC) -r -foangband.res $(ANGBAND_RC)
+
+l-player.c: l-player.pkg $(TOLUA_EXE)
+	$(TOLUA_EXE) -n player -o l-player.c l-player.pkg
+
+l-ui.c: l-ui.pkg $(TOLUA_EXE)
+	$(TOLUA_EXE) -n ui -o l-ui.c l-ui.pkg
+
+l-object.c: l-object.pkg $(TOLUA_EXE)
+	$(TOLUA_EXE) -n object -o l-object.c l-object.pkg
+
+l-monst.c: l-monst.pkg $(TOLUA_EXE)
+	$(TOLUA_EXE) -n monst -o l-monst.c l-monst.pkg
+
+l-spell.c: l-spell.pkg $(TOLUA_EXE)
+	$(TOLUA_EXE) -n spell -o l-spell.c l-spell.pkg
+
+l-random.c: l-random.pkg $(TOLUA_EXE)
+	$(TOLUA_EXE) -n random -o l-random.c l-random.pkg
+
+l-misc.c: l-misc.pkg $(TOLUA_EXE)
+	$(TOLUA_EXE) -n misc -o l-misc.c l-misc.pkg
 
 ########################### Implicit Rules ########################
 .c.obj:
@@ -108,4 +152,3 @@ angband.res: $(ANGBAND_RC)
 
 .obj.exe:
 	$(CPP) $(CPPFLAGS) $<
-
