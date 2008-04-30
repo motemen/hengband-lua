@@ -29,7 +29,7 @@ hengband_SOURCES = \
 	mindtips.h readdib.h rooms.h streams.h init.h \
 	types.h z-config.h z-form.h z-rand.h z-term.h z-util.h z-virt.h \
 	script.c script.h \
-	l-player.pkg l-ui.pkg l-object.pkg l-monst.pkg l-spell.pkg l-random.pkg
+	l-player.pkg l-ui.pkg l-object.pkg l-monst.pkg l-spell.pkg l-random.pkg l-misc.pkg
 
 EXTRA_hengband_SOURCES = \
 	angband.ico angband.rc ang_eng.rc maid-x11.c main-mac.c main-win.c \
@@ -38,7 +38,7 @@ EXTRA_hengband_SOURCES = \
 	readdib.c wall.bmp
 
 CLEANFILES = \
-	l-player.c l-ui.c l-object.c l-monst.c l-spell.c l-random.c
+	l-player.c l-ui.c l-object.c l-monst.c l-spell.c l-random.c l-misc.pkg
 
 .pkg.c:
 	./lua/tolua -n $(subst l-,,$*) -o $@ $<
