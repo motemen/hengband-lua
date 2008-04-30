@@ -77,7 +77,7 @@ TOLUAOBJS = \
 	$(LUAOBJS)
 
 LUA_WRAPPER_OBJS = \
-	l-player.obj
+	l-player.obj l-ui.obj l-object.obj l-monst.obj l-spell.obj l-random.obj l-misc.obj
 
 OBJ = \
 	artifact.obj autopick.obj avatar.obj birth.obj bldg.obj cave.obj \
@@ -124,6 +124,24 @@ angband.res: $(ANGBAND_RC)
 
 l-player.c: l-player.pkg $(TOLUA_EXE)
 	$(TOLUA_EXE) -n player -o l-player.c l-player.pkg
+
+l-ui.c: l-ui.pkg $(TOLUA_EXE)
+	$(TOLUA_EXE) -n ui -o l-ui.c l-ui.pkg
+
+l-object.c: l-object.pkg $(TOLUA_EXE)
+	$(TOLUA_EXE) -n object -o l-object.c l-object.pkg
+
+l-monst.c: l-monst.pkg $(TOLUA_EXE)
+	$(TOLUA_EXE) -n monst -o l-monst.c l-monst.pkg
+
+l-spell.c: l-spell.pkg $(TOLUA_EXE)
+	$(TOLUA_EXE) -n spell -o l-spell.c l-spell.pkg
+
+l-random.c: l-random.pkg $(TOLUA_EXE)
+	$(TOLUA_EXE) -n random -o l-random.c l-random.pkg
+
+l-misc.c: l-misc.pkg $(TOLUA_EXE)
+	$(TOLUA_EXE) -n misc -o l-misc.c l-misc.pkg
 
 ########################### Implicit Rules ########################
 .c.obj:
