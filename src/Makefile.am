@@ -38,7 +38,7 @@ EXTRA_hengband_SOURCES = \
 	readdib.c wall.bmp
 
 CLEANFILES = \
-	l-player.c l-ui.c l-object.c l-monst.c l-spell.c l-random.c l-misc.pkg
+	l-player.c l-ui.c l-object.c l-monst.c l-spell.c l-random.c l-misc.c
 
 .pkg.c:
 	./lua/tolua -n $(subst l-,,$*) -o $@ $<
