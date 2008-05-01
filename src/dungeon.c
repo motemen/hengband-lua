@@ -6945,6 +6945,13 @@ prt("お待ち下さい...", 0, 0);
 	(void)combine_and_reorder_home(STORE_HOME);
 	(void)combine_and_reorder_home(STORE_MUSEUM);
 
+	/* Call "start game" event handler */
+	if (new_game)
+	{
+		/* Event -- start game */
+		start_game_hook();
+	}
+
 	/* Process */
 	while (TRUE)
 	{
