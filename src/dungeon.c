@@ -4383,6 +4383,9 @@ static void process_command(void)
 
 #endif /* ALLOW_REPEAT -- TNB */
 
+	/* Event -- process command */
+	if (process_command_hook(p_ptr->command_cmd)) return;
+
 	now_message = 0;
 
 	/* Parse the command */
