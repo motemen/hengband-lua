@@ -5417,6 +5417,9 @@ static void process_player(void)
 {
 	int i;
 
+	/* Event -- Player turn */
+	player_turn_hook();
+
 	/*** Apply energy ***/
 
 	if (hack_mutation)
